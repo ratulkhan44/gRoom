@@ -19,12 +19,23 @@ class GroomStub(object):
                 request_serializer=protos_dot_groom__pb2.RoomRegistrationRequest.SerializeToString,
                 response_deserializer=protos_dot_groom__pb2.RoomRegistrationResponse.FromString,
                 )
+        self.SendNewsStream = channel.stream_unary(
+                '/groom.Groom/SendNewsStream',
+                request_serializer=protos_dot_groom__pb2.NewsFlash.SerializeToString,
+                response_deserializer=protos_dot_groom__pb2.NewsStreamStatus.FromString,
+                )
 
 
 class GroomServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def RegisterToRoom(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SendNewsStream(self, request_iterator, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -37,6 +48,11 @@ def add_GroomServicer_to_server(servicer, server):
                     servicer.RegisterToRoom,
                     request_deserializer=protos_dot_groom__pb2.RoomRegistrationRequest.FromString,
                     response_serializer=protos_dot_groom__pb2.RoomRegistrationResponse.SerializeToString,
+            ),
+            'SendNewsStream': grpc.stream_unary_rpc_method_handler(
+                    servicer.SendNewsStream,
+                    request_deserializer=protos_dot_groom__pb2.NewsFlash.FromString,
+                    response_serializer=protos_dot_groom__pb2.NewsStreamStatus.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -62,5 +78,22 @@ class Groom(object):
         return grpc.experimental.unary_unary(request, target, '/groom.Groom/RegisterToRoom',
             protos_dot_groom__pb2.RoomRegistrationRequest.SerializeToString,
             protos_dot_groom__pb2.RoomRegistrationResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SendNewsStream(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_unary(request_iterator, target, '/groom.Groom/SendNewsStream',
+            protos_dot_groom__pb2.NewsFlash.SerializeToString,
+            protos_dot_groom__pb2.NewsStreamStatus.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

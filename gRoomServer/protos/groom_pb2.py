@@ -11,9 +11,10 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12protos/groom.proto\x12\x05groom\",\n\x17RoomRegistrationRequest\x12\x11\n\troom_name\x18\x01 \x01(\t\"+\n\x18RoomRegistrationResponse\x12\x0f\n\x07room_id\x18\x01 \x01(\x05\x32Z\n\x05Groom\x12Q\n\x0eRegisterToRoom\x12\x1e.groom.RoomRegistrationRequest\x1a\x1f.groom.RoomRegistrationResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12protos/groom.proto\x12\x05groom\x1a\x1fgoogle/protobuf/timestamp.proto\",\n\x17RoomRegistrationRequest\x12\x11\n\troom_name\x18\x01 \x01(\t\"+\n\x18RoomRegistrationResponse\x12\x0f\n\x07room_id\x18\x01 \x01(\x05\"M\n\tNewsFlash\x12-\n\tnews_time\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x11\n\tnews_item\x18\x02 \x01(\t\"#\n\x10NewsStreamStatus\x12\x0f\n\x07success\x18\x01 \x01(\x08\x32\x99\x01\n\x05Groom\x12Q\n\x0eRegisterToRoom\x12\x1e.groom.RoomRegistrationRequest\x1a\x1f.groom.RoomRegistrationResponse\x12=\n\x0eSendNewsStream\x12\x10.groom.NewsFlash\x1a\x17.groom.NewsStreamStatus(\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -21,10 +22,14 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'protos.groom_pb2', _globals
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _globals['_ROOMREGISTRATIONREQUEST']._serialized_start=29
-  _globals['_ROOMREGISTRATIONREQUEST']._serialized_end=73
-  _globals['_ROOMREGISTRATIONRESPONSE']._serialized_start=75
-  _globals['_ROOMREGISTRATIONRESPONSE']._serialized_end=118
-  _globals['_GROOM']._serialized_start=120
-  _globals['_GROOM']._serialized_end=210
+  _globals['_ROOMREGISTRATIONREQUEST']._serialized_start=62
+  _globals['_ROOMREGISTRATIONREQUEST']._serialized_end=106
+  _globals['_ROOMREGISTRATIONRESPONSE']._serialized_start=108
+  _globals['_ROOMREGISTRATIONRESPONSE']._serialized_end=151
+  _globals['_NEWSFLASH']._serialized_start=153
+  _globals['_NEWSFLASH']._serialized_end=230
+  _globals['_NEWSSTREAMSTATUS']._serialized_start=232
+  _globals['_NEWSSTREAMSTATUS']._serialized_end=267
+  _globals['_GROOM']._serialized_start=270
+  _globals['_GROOM']._serialized_end=423
 # @@protoc_insertion_point(module_scope)

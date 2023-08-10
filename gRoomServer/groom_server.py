@@ -21,6 +21,15 @@ class GroomService(pb2_grpc.GroomServicer):
             return pb2.RoomRegistrationResponse(room_id=room_number)
         except Exception as e:
             print("*********** Here is the Error ************",e.args[0])
+            
+    
+    def SendNewsStream(self, request_iterator, context):
+        try:
+            for request in request_iterator:
+                print(request)
+            return pb2.NewsStreamStatus(success=True)
+        except Exception as e:
+            print("*********** Here is the Error ************",e.args[0])
     
     
 def serve():
